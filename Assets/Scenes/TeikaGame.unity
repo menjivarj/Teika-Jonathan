@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehaviour
   speed: 0.003
-  sweetHeld: {fileID: 2028372811}
+  sweet: {fileID: 3786124402896375030, guid: f9b344bd5f9b4024482a1d79394bea8a, type: 3}
   offY: -0.5
 --- !u!212 &1230965825
 SpriteRenderer:
@@ -1415,11 +1415,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &2028372811 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3786124402896375030, guid: f9b344bd5f9b4024482a1d79394bea8a, type: 3}
-  m_PrefabInstance: {fileID: 1700790269}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2028708454
 GameObject:
   m_ObjectHideFlags: 0
