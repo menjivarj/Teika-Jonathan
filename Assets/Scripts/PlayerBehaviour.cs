@@ -5,7 +5,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
 
     public float speed;
-    public GameObject sweet;
+    public GameObject[] sweets;
     private GameObject sweetHeld;
     public float offY;
 
@@ -22,7 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
             Vector3 sweetOffset = new Vector3(0.0f, offY, 0.0f);
             sweetHeld.transform.position = playerPos + sweetOffset;
         } else {
-            sweetHeld = Instantiate(sweet, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            sweetHeld = Instantiate(sweets[Random.Range(0, 5)], new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
 
             Keyboard k = Keyboard.current;

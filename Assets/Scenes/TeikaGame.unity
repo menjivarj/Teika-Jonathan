@@ -715,7 +715,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehaviour
   speed: 0.003
-  sweet: {fileID: 3786124402896375030, guid: f9b344bd5f9b4024482a1d79394bea8a, type: 3}
+  sweets:
+  - {fileID: 3786124402896375030, guid: f9b344bd5f9b4024482a1d79394bea8a, type: 3}
+  - {fileID: 5539504524139030774, guid: 4cd49a54ffcdb974ab488a1d2ac762da, type: 3}
+  - {fileID: 5914412421488756221, guid: b669cb4d688b52f48b40e5ed58bc8557, type: 3}
+  - {fileID: 6159722698850227687, guid: 7c3855692a6d6f045820e203998b4a08, type: 3}
+  - {fileID: 1263736914066462753, guid: 04aa38ab01111ec4bbef5552192cc5a7, type: 3}
+  - {fileID: 8224080489895427650, guid: 8f7a5c98d4843804f8709def988455a0, type: 3}
+  - {fileID: 1531819540200685306, guid: ea1089479960df84a8c7283ca652abaa, type: 3}
+  - {fileID: 6769451203262330568, guid: 30dd8b1f374b51749b109d670511a809, type: 3}
+  - {fileID: 6559100239676904111, guid: c8f3e49ee4efe694faea1b25310ee91f, type: 3}
+  - {fileID: 6004138039309321337, guid: ee846255bdb163e479d7740d5df5f481, type: 3}
   offY: -0.5
 --- !u!212 &1230965825
 SpriteRenderer:
