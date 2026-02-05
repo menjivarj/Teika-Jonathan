@@ -5,6 +5,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
 
     public float speed;
+    public float limit;
     public GameObject[] sweets;
     private GameObject sweetHeld;
     public float offY;
@@ -37,16 +38,17 @@ public class PlayerBehaviour : MonoBehaviour
             sweetHeld = null;
         }
 
+        float offset = 0.0f;
         if (k.aKey.isPressed || k.leftArrowKey.isPressed) {
-            Vector3 newPos = transform.position;
-            newPos.x = newPos.x - speed;
-            transform.position = newPos;
+            offset = -speed;
         }
         if (k.dKey.isPressed || k.rightArrowKey.isPressed) {
-            Vector3 newPos = transform.position;
-            newPos.x = newPos.x + speed;
-            transform.position = newPos;
+            offset = speed;
         }
-
+        Vector3 newPos = transform.position;
+        if (!((newPos.x + offset) > limit || (newPos.x + offset) < (-1 * limit))) {
+            newPos.x = newPos.x + offset;
+        }
+        transform.position = newPos;
     }
 }
