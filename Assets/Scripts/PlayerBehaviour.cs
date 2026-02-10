@@ -9,26 +9,31 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject[] sweets;
     private GameObject sweetHeld;
     public float offY;
+    private int move;
+    public float dropDelay;
+    private float lastDropTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
-        
+        move = 0; // Can move both left and right on move = 0
     }
 
     // Update is called once per frame
     void Update() {
 
+        // Moves sweet held by player along with the player
+        Vector3 playerPos = transform.position;
         if (sweetHeld != null){
-            Vector3 playerPos = transform.position;
             Vector3 sweetOffset = new Vector3(0.0f, offY, 0.0f);
             sweetHeld.transform.position = playerPos + sweetOffset;
-        } else {
-            sweetHeld = Instantiate(sweets[Random.Range(0, 5)], new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        } else { // Creates sweet for player to hold if there is none held
+            sweetHeld = Instantiate(sweets[Random.Range(0, 5)], playerPos, Quaternion.identity);
         }
 
-            Keyboard k = Keyboard.current;
+        Keyboard k = Keyboard.current;
 
-        if (k.spaceKey.wasPressedThisFrame){
+        // Dropping sweetHeld
+        if (k.spaceKey.wasPressedThisFrame && (Time.time - lastDropTime) > dropDelay){
             Rigidbody2D body = sweetHeld.GetComponent<Rigidbody2D>();
             body.gravityScale = 1.0f;
 
@@ -36,13 +41,15 @@ public class PlayerBehaviour : MonoBehaviour
             collider.enabled = true;
 
             sweetHeld = null;
+            lastDropTime = Time.time;
         }
 
+        // Keyboard player movement
         float offset = 0.0f;
-        if (k.aKey.isPressed || k.leftArrowKey.isPressed) {
+        if ((k.aKey.isPressed || k.leftArrowKey.isPressed) && move != 1) {
             offset = -speed;
         }
-        if (k.dKey.isPressed || k.rightArrowKey.isPressed) {
+        if ((k.dKey.isPressed || k.rightArrowKey.isPressed) && move != -1) {
             offset = speed;
         }
         Vector3 newPos = transform.position;
@@ -51,4 +58,5 @@ public class PlayerBehaviour : MonoBehaviour
         }
         transform.position = newPos;
     }
+
 }
