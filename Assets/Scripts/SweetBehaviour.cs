@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class SweetBehaviour : MonoBehaviour
 {
-    public float timeout;
-    private float timeStart;
+    //public float timeout;
+    //private float timeStart;
+
+    public GameObject[] sweets;
+    public int sweetType;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        sweets = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>().sweets;
     }
 
     // Update is called once per frame
@@ -17,28 +20,43 @@ public class SweetBehaviour : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("TopBorder"))
+        Vector3 otherPos = other.transform.position;
+        if (other.gameObject.CompareTag("Sweet") && (other.gameObject.GetComponent<SweetBehaviour>().sweetType == sweetType) && (sweetType < sweets.Length - 1) && (gameObject.transform.position.x < otherPos.x || (gameObject.transform.position.x == otherPos.x && gameObject.transform.position.y >= otherPos.y)))
         {
-            timeStart = Time.time;
+            //Create merged sweet
+            GameObject current = Instantiate(sweets[sweetType + 1], Vector3.Lerp(gameObject.transform.position, otherPos, 0.5f), Quaternion.identity);
+            current.GetComponent<Collider2D>().enabled = true;
+            current.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+            //Destroy both sweets
+            Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("TopBorder") && (Time.time - timeStart) > timeout)
-        {
-            print("Game Over");
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.gameObject.CompareTag("TopBorder"))
+    //    {
+    //        timeStart = Time.time;
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("TopBorder"))
-        {
-            timeStart = 0.0f;
-        }
-    }
+    //private void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (other.gameObject.CompareTag("TopBorder") && (Time.time - timeStart) > timeout)
+    //    {
+    //        print("Game Over");
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D other)
+    //{
+    //    if (other.gameObject.CompareTag("TopBorder"))
+    //    {
+    //        timeStart = 0.0f;
+    //    }
+    //}
 
 }

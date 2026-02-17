@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41ac20c3ac69864ba355679e09dd050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BorderBehaviour
-  timeout: 5
+  timeout: 3
   gameOver: {fileID: 1858991188}
 --- !u!1001 &1159075676
 PrefabInstance:
@@ -1482,7 +1482,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1826493094
 RectTransform:

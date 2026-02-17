@@ -59,4 +59,9 @@ public class PlayerBehaviour : MonoBehaviour
         transform.position = newPos;
     }
 
+    public void GameOver()
+    {
+
+    }
+
 }

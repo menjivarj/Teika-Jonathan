@@ -82,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9154013356945521823, guid: a76019761c6d3c0429b7257e3ab363ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -190,5 +190,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88ed66d133b2c144ba91e74a3f9456d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SweetBehaviour
-  timeout: 3
-  timeStart: 0
+  sweets: []
+  sweetType: 8
