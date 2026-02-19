@@ -29,11 +29,17 @@ public class SweetBehaviour : MonoBehaviour
             GameObject current = Instantiate(sweets[sweetType + 1], Vector3.Lerp(gameObject.transform.position, otherPos, 0.5f), Quaternion.identity);
             current.GetComponent<Collider2D>().enabled = true;
             current.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+
+            //Update score
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>().updateScore(sweetType);
+
             //Destroy both sweets
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
+
+
 
     //private void OnTriggerEnter2D(Collider2D other)
     //{

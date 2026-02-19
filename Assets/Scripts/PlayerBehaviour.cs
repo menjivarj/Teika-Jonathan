@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,9 +14,14 @@ public class PlayerBehaviour : MonoBehaviour
     public float dropDelay;
     private float lastDropTime;
 
+    public int[] points;
+    public int total;
+    public TMP_Text textField;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         move = 0; // Can move both left and right on move = 0
+        total = 0; // Set point total to 0
     }
 
     // Update is called once per frame
@@ -57,6 +63,12 @@ public class PlayerBehaviour : MonoBehaviour
             newPos.x = newPos.x + offset;
         }
         transform.position = newPos;
+    }
+
+    public void updateScore (int index)
+    {
+        total += points[index];
+        textField.SetText("Score:\n" +  total);
     }
 
     public void GameOver()
