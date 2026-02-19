@@ -69,6 +69,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         total += points[index];
         textField.SetText("Score:\n" +  total);
+        GetComponent<AudioSource>().Play();
     }
 
     public void GameOver()
