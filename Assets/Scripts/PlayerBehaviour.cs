@@ -17,15 +17,24 @@ public class PlayerBehaviour : MonoBehaviour
     public int[] points;
     public int total;
     public TMP_Text textField;
+    public AudioClip dropSound;
+    public AudioClip mergeSound;
+    private bool gameOver;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         move = 0; // Can move both left and right on move = 0
         total = 0; // Set point total to 0
+        gameOver = false;
     }
 
     // Update is called once per frame
     void Update() {
+
+        if (gameOver)
+        {
+            return;
+        }
 
         // Moves sweet held by player along with the player
         Vector3 playerPos = transform.position;
@@ -33,7 +42,7 @@ public class PlayerBehaviour : MonoBehaviour
             Vector3 sweetOffset = new Vector3(0.0f, offY, 0.0f);
             sweetHeld.transform.position = playerPos + sweetOffset;
         } else { // Creates sweet for player to hold if there is none held
-            sweetHeld = Instantiate(sweets[Random.Range(0, 5)], playerPos, Quaternion.identity);
+            sweetHeld = Instantiate(sweets[GameObject.FindGameObjectWithTag("Queue").GetComponent<QueueManager>().updateQueue()], playerPos, Quaternion.identity);
         }
 
         Keyboard k = Keyboard.current;
@@ -48,6 +57,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             sweetHeld = null;
             lastDropTime = Time.time;
+            GetComponent<AudioSource>().PlayOneShot(dropSound);
         }
 
         // Keyboard player movement
@@ -69,12 +79,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         total += points[index];
         textField.SetText("Score:\n" +  total);
-        GetComponent<AudioSource>().Play();
+        GetComponent<AudioSource>().PlayOneShot(mergeSound);
     }
 
     public void GameOver()
     {
-
+        gameOver = true;
     }
 
 }

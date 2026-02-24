@@ -32,7 +32,7 @@ public class BorderBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Sweet") && (Time.time - timeStart) > timeout)
         {
             gameOver.SetActive(true);
-
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>().GameOver();
         }
     }
 
