@@ -21,11 +21,14 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioClip mergeSound;
     private bool gameOver;
 
+    private QueueManager queue;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         move = 0; // Can move both left and right on move = 0
         total = 0; // Set point total to 0
         gameOver = false;
+        queue = GameObject.FindGameObjectWithTag("Queue").GetComponent<QueueManager>();
     }
 
     // Update is called once per frame
@@ -42,7 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
             Vector3 sweetOffset = new Vector3(0.0f, offY, 0.0f);
             sweetHeld.transform.position = playerPos + sweetOffset;
         } else { // Creates sweet for player to hold if there is none held
-            sweetHeld = Instantiate(sweets[GameObject.FindGameObjectWithTag("Queue").GetComponent<QueueManager>().updateQueue()], playerPos, Quaternion.identity);
+            sweetHeld = Instantiate(sweets[queue.updateQueue()], playerPos, Quaternion.identity);
         }
 
         Keyboard k = Keyboard.current;

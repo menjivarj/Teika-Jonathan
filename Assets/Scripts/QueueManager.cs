@@ -13,8 +13,8 @@ public class QueueManager : MonoBehaviour
         {
             childRenderers[i] = transform.GetChild(i).GetComponent<SpriteRenderer>();
         }
-        queue = new int[4];
-        for (int i = 0; i < 4; i++) { 
+        queue = new int[childRenderers.Length];
+        for (int i = 0; i < childRenderers.Length; i++) { 
             queue[i] = Random.Range(0, childRenderers.Length);
         }
     }
