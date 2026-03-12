@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149a9308595b00442bd3fb0e9d7e7273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehaviour
-  speed: 0.003
+  speed: 3
   limit: 3.67
   sweets:
   - {fileID: 3786124402896375030, guid: f9b344bd5f9b4024482a1d79394bea8a, type: 3}
@@ -1707,10 +1707,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QueueManager
   UISprites:
-  - {fileID: 8586885197115800619, guid: 359f21f2ccc8c034091558f34f0081ec, type: 3}
-  - {fileID: 8160775752198118580, guid: 359f21f2ccc8c034091558f34f0081ec, type: 3}
-  - {fileID: 7843416716369364892, guid: 359f21f2ccc8c034091558f34f0081ec, type: 3}
-  - {fileID: 7448113381798972013, guid: 359f21f2ccc8c034091558f34f0081ec, type: 3}
+  - {fileID: 6882009670399570305, guid: a76019761c6d3c0429b7257e3ab363ab, type: 3}
+  - {fileID: 8429655564606336314, guid: a76019761c6d3c0429b7257e3ab363ab, type: 3}
+  - {fileID: -7830399461681594364, guid: a76019761c6d3c0429b7257e3ab363ab, type: 3}
+  - {fileID: -5550593049011392667, guid: a76019761c6d3c0429b7257e3ab363ab, type: 3}
+  - {fileID: 1522542682994203635, guid: a76019761c6d3c0429b7257e3ab363ab, type: 3}
   queue: 
 --- !u!4 &1376879755
 Transform:
@@ -1931,7 +1932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
   background: {fileID: 2387845717768830143, guid: 862ef040fb164a641b9dab26b623f9a4, type: 3}
   pivotPoint: -10.24
-  speed: 0
+  speed: 1
 --- !u!4 &1584558492
 Transform:
   m_ObjectHideFlags: 0

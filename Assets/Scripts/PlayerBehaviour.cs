@@ -66,10 +66,10 @@ public class PlayerBehaviour : MonoBehaviour
         // Keyboard player movement
         float offset = 0.0f;
         if ((k.aKey.isPressed || k.leftArrowKey.isPressed) && move != 1) {
-            offset = -speed;
+            offset = Time.deltaTime * -speed;
         }
         if ((k.dKey.isPressed || k.rightArrowKey.isPressed) && move != -1) {
-            offset = speed;
+            offset = Time.deltaTime * speed;
         }
         Vector3 newPos = transform.position;
         if (!((newPos.x + offset) > limit || (newPos.x + offset) < (-1 * limit))) {

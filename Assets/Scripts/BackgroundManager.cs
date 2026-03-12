@@ -22,6 +22,13 @@ public class BackgroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < backgrounds.Length; i++)
+        {
+            backgrounds[i].transform.position += new Vector3(Time.deltaTime * speed, Time.deltaTime * speed, 0);
+            if (backgrounds[i].transform.position.x > ((-1 * pivotPoint) / 2))
+            {
+                backgrounds[i].transform.position = new Vector3(pivotPoint, pivotPoint, 0);
+            }
+        }
     }
 }
