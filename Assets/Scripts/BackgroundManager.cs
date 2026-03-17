@@ -14,8 +14,7 @@ public class BackgroundManager : MonoBehaviour
         for (int i = 0; i < backgrounds.Length; i++)
         {
             float pos = pivotPoint - (pivotPoint / 2 * i);
-            Vector2 position = new Vector2(pos, pos);
-            backgrounds[i] = Instantiate(background, position, Quaternion.identity);
+            backgrounds[i] = Instantiate(background, new Vector2(pos, pos), Quaternion.identity);
         }
     }
 
