@@ -13,6 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     private int move;
     public float dropDelay;
     private float lastDropTime;
+    private int streak;
 
     public int[] points;
     public int total;
@@ -61,6 +62,7 @@ public class PlayerBehaviour : MonoBehaviour
             sweetHeld = null;
             lastDropTime = Time.time;
             GetComponent<AudioSource>().PlayOneShot(dropSound);
+            streak = 0;
         }
 
         // Keyboard player movement
@@ -80,8 +82,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void updateScore (int index)
     {
-        total += points[index];
-        textField.SetText("Score:\n" +  total);
+        streak++;
+        total += streak <= 1 ? points[index] : (int)(points[index] * (1 + (.1 * streak)));
+        string scoreText = streak <= 1 ? "Score:\n" + total + "\n(+" + points[index] + ")" : "Score:\n" + total + "\n(+" + points[index] + " * " + (1 + (.1 * streak)) + ")\nStreak x" + streak + "!";
+        textField.SetText(scoreText);
         GetComponent<AudioSource>().PlayOneShot(mergeSound);
     }
 
