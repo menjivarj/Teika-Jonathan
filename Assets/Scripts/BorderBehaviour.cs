@@ -38,6 +38,7 @@ public class BorderBehaviour : MonoBehaviour
     {
         float timer = timeout + (timeStart - Time.time);
         timerText.SetText(System.MathF.Round(timer, 2).ToString() + "s");
+        other.GetComponent<Rigidbody2D>().WakeUp();
         if (other.gameObject.CompareTag("Sweet") && timer <= 0)
         {
             gameOver.SetActive(true);
